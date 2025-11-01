@@ -13,7 +13,7 @@ A full-stack e-commerce web application built with Next.js, demonstrating differ
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/E-Commerce.git
+   git clone https://github.com/siddardha003/E-Commerce.git
    cd E-Commerce/e-commerce
    ```
 
@@ -154,7 +154,7 @@ The application implements a clean separation of concerns:
 *Real-time inventory dashboard with server-side rendering*
 
 ### Recommendations Page - React Server Components
-![Recommendations](./e-commerce/public/Screenshot%202025-11-02%20003351.png)
+![Recommendations](./e-commerce/public/Screenshot%202025-11-02%20003758.png)
 *Curated product recommendations with emerald green "View Details" buttons*
 
 ### Admin Panel - Client-Side Rendering (CSR)
@@ -162,7 +162,7 @@ The application implements a clean separation of concerns:
 *Interactive admin panel for product management*
 
 ### Additional Page View
-![Additional View](./e-commerce/public/Screenshot%202025-11-02%20003758.png)
+![Additional View](./e-commerce/public/Screenshot%202025-11-02%20003351.png)
 *Additional application functionality*
 
 
