@@ -96,7 +96,7 @@ export default async function RecommendationsPage() {
                 <div className="space-y-2">
                   <Link
                     href={`/products/${product.slug}`}
-                    className="block w-full bg-blue-600 text-white text-center py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                    className="block w-full bg-emerald-600 text-white text-center py-2 rounded-lg hover:bg-emerald-700 transition-colors"
                   >
                     View Details
                   </Link>
