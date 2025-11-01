@@ -13,7 +13,7 @@ A full-stack e-commerce web application built with Next.js, demonstrating differ
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/E-Commerce.git
+   git clone https://github.com/siddardha003/E-Commerce.git
    cd E-Commerce/e-commerce
    ```
 
