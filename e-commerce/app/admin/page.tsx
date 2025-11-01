@@ -226,49 +226,75 @@ export default function AdminPage() {
   // Login form
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
-          <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Admin Access Required
-            </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              Enter your admin key to access the product management panel
-            </p>
+          <div className="card p-8">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-200 to-orange-300 flex items-center justify-center">
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <h2 className="text-3xl font-bold text-gray-800">
+                Admin Access
+              </h2>
+              <p className="mt-2 text-gray-600">
+                Enter your admin key to access the management panel
+              </p>
+            </div>
+            
+            <div className="mb-6 p-4 bg-gradient-to-r from-orange-50 to-peach-50 border border-orange-200 rounded-xl">
+              <p className="text-sm text-orange-800 text-center font-medium">
+                <span className="inline-flex items-center">
+                  <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                  </svg>
+                  Demo Mode
+                </span>
+              </p>
+              <p className="text-xs text-orange-700 text-center mt-1">
+                For development, use "admin123" as the admin key
+              </p>
+            </div>
+            <form className="space-y-6" onSubmit={handleLogin}>
+              <div>
+                <label htmlFor="adminKey" className="block text-sm font-medium text-gray-700 mb-2">
+                  Admin Key
+                </label>
+                <input
+                  id="adminKey"
+                  name="adminKey"
+                  type="password"
+                  required
+                  value={adminKey}
+                  onChange={(e) => setAdminKey(e.target.value)}
+                  className="input-field w-full"
+                  placeholder="Enter admin key"
+                />
+              </div>
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl">
+                  <p className="text-red-800 text-sm text-center">{error}</p>
+                </div>
+              )}
+              <div>
+                <button
+                  type="submit"
+                  className="btn-primary w-full"
+                >
+                  Access Admin Panel
+                </button>
+              </div>
+              <div className="text-center">
+                <Link href="/" className="nav-link inline-flex items-center text-sm">
+                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+                  Back to Home
+                </Link>
+              </div>
+            </form>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-            <div>
-              <label htmlFor="adminKey" className="sr-only">
-                Admin Key
-              </label>
-              <input
-                id="adminKey"
-                name="adminKey"
-                type="password"
-                required
-                value={adminKey}
-                onChange={(e) => setAdminKey(e.target.value)}
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Enter admin key"
-              />
-            </div>
-            {error && (
-              <div className="text-red-600 text-sm text-center">{error}</div>
-            )}
-            <div>
-              <button
-                type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Access Admin Panel
-              </button>
-            </div>
-            <div className="text-center">
-              <Link href="/" className="text-blue-600 hover:text-blue-800 text-sm">
-                ← Back to Home
-              </Link>
-            </div>
-          </form>
         </div>
       </div>
     );

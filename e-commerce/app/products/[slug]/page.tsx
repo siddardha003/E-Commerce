@@ -36,31 +36,31 @@ export default async function ProductPage({ params }: ProductPageProps) {
     }
 
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
-        <nav className="mb-8">
-          <ol className="flex items-center space-x-2 text-sm">
+        <nav className="mb-10">
+          <ol className="flex items-center space-x-3 text-sm">
             <li>
-              <Link href="/" className="text-blue-600 hover:text-blue-800">
+              <Link href="/" className="nav-link">
                 Home
               </Link>
             </li>
             <li>
-              <span className="text-gray-500">/</span>
+              <span className="text-orange-300">•</span>
             </li>
             <li>
-              <span className="text-gray-500">{product.category}</span>
+              <span className="text-gray-600">{product.category}</span>
             </li>
             <li>
-              <span className="text-gray-500">/</span>
+              <span className="text-orange-300">•</span>
             </li>
             <li>
-              <span className="text-gray-900 font-medium">{product.name}</span>
+              <span className="text-gray-800 font-medium">{product.name}</span>
             </li>
           </ol>
         </nav>
 
-        <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-start">
           {/* Product Image */}
           <div className="flex flex-col-reverse">
             <div className="aspect-w-1 aspect-h-1 w-full">
@@ -70,11 +70,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   alt={product.name}
                   width={600}
                   height={600}
-                  className="w-full h-full object-center object-cover rounded-lg"
+                  className="w-full h-full object-center object-cover rounded-2xl shadow-lg"
                 />
               ) : (
-                <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-400 text-lg">No Image Available</span>
+                <div className="w-full h-96 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="text-orange-300 text-lg">No Image Available</span>
                 </div>
               )}
             </div>
@@ -142,10 +142,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 disabled={product.inventory === 0}
                 className={`max-w-xs flex-1 ${
                   product.inventory > 0
-                    ? 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
+                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 focus:ring-orange-500 shadow-lg hover:shadow-xl'
                     : 'bg-gray-300 cursor-not-allowed'
-                } border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full transition-colors`}
+                } border border-transparent rounded-xl py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full transition-all duration-300 hover:transform hover:scale-[1.02]`}
               >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5H20" />
+                </svg>
                 {product.inventory > 0 ? 'Add to cart' : 'Out of stock'}
               </button>
 
