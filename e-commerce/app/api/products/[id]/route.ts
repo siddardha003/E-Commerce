@@ -11,7 +11,7 @@ function isAdmin(request: NextRequest): boolean {
 // PUT /api/products/[id] - Update existing product (Admin only)
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   if (!isAdmin(request)) {
     const response: ApiResponse<null> = {
@@ -22,7 +22,7 @@ export async function PUT(
   }
 
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const productData: Partial<ProductInput> = body;
 
@@ -57,7 +57,7 @@ export async function PUT(
 // DELETE /api/products/[id] - Delete product (Admin only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   if (!isAdmin(request)) {
     const response: ApiResponse<null> = {
@@ -68,7 +68,7 @@ export async function DELETE(
   }
 
   try {
-    const { id } = params;
+    const { id } = await params;
     const deleted = await ProductService.deleteProduct(id);
     
     if (!deleted) {

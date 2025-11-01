@@ -4,9 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // ISR: Generate static pages with revalidation every 60 seconds
@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   
   try {
     const product = await ProductService.getProductBySlug(slug);
