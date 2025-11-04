@@ -9,21 +9,21 @@ interface ProductPageProps {
   }>;
 }
 
-// ISR: Generate static pages with revalidation every 60 seconds
-export const revalidate = 60;
+// Dynamic rendering - no static generation needed for frequently changing products
+export const dynamic = 'force-dynamic';
 
-// Generate static params for all products at build time
-export async function generateStaticParams() {
-  try {
-    const products = await ProductService.getAllProducts();
-    return products.map((product) => ({
-      slug: product.slug,
-    }));
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
-}
+// Remove static params generation since we're using dynamic rendering
+// export async function generateStaticParams() {
+//   try {
+//     const products = await ProductService.getAllProducts();
+//     return products.map((product) => ({
+//       slug: product.slug,
+//     }));
+//   } catch (error) {
+//     console.error('Error generating static params:', error);
+//     return [];
+//   }
+// }
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
